@@ -18,14 +18,13 @@ public class AndroidSetUp {
         capabilities.setCapability("platformName", "Android");
         capabilities.setCapability("platformVersion", "4.4.2");
         capabilities.setCapability("deviceName", "Samsung galaxy s2 (i9100)");
-        capabilities.setCapability("app","RingCentral.apk");
+        capabilities.setCapability("app","src/main/resources/android_app/RingCentral_9.0.2.1.6_apk-dl.com.apk");
         capabilities.setCapability("appPackage", "com.ringcentral.android");
-        capabilities.setCapability("appActivity", "");
+        capabilities.setCapability("appActivity", "com.ringcentral.android.LoginScreen");
         try {
             driver = new AndroidDriver(new URL("http://0.0.0.0:4723/wd/hub"), capabilities);
         }catch (Exception e){
             log.error("PROBLEM WITH CONNECTION TO HOST",e);
-            System.err.print("Problem with connection");
         }
     }
 }
