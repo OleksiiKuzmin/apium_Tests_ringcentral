@@ -25,6 +25,7 @@ public class AndroidSetUp {
             driver = new AndroidDriver(new URL("http://0.0.0.0:4723/wd/hub"), capabilities);
         }catch (Exception e){
             log.error("PROBLEM WITH CONNECTION TO HOST",e);
+            System.err.print("Problem with connection");
         }
     }
 }

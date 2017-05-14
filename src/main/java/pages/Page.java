@@ -14,14 +14,17 @@ import java.util.HashMap;
  * Created by dell on 12.05.17.
  */
 public class Page {
- WebDriver driver;
- Page(WebDriver driver){
-     this.driver = driver;
- }
+    WebDriver driver;
+
+    Page(WebDriver driver) {
+        this.driver = driver;
+    }
+
     protected void waitForVisibilityOf(By locator) {
         WebDriverWait wait = new WebDriverWait(driver, 30);
         wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
+
     protected void waitForClickabilityOf(By locator) {
         WebDriverWait wait = new WebDriverWait(driver, 30);
         wait.until(ExpectedConditions.elementToBeClickable(locator));
@@ -75,8 +78,8 @@ public class Page {
     public void performTapAction(WebElement elementToTap) {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         HashMap<String, Double> tapObject = new HashMap<String, Double>();
-        tapObject.put("x", (double) 360); // in pixels from left
-        tapObject.put("y", (double) 170); // in pixels from top
+        tapObject.put("x", 360.0); // in pixels from left
+        tapObject.put("y", 170.0); // in pixels from top
         tapObject.put("element", Double.valueOf(((RemoteWebElement) elementToTap).getId()));
         js.executeScript("mobile: tap", tapObject);
     }

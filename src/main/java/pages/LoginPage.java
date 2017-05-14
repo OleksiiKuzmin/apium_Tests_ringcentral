@@ -17,6 +17,8 @@ public class LoginPage extends Page {
     By extensionNumberEdit = By.id("com.ringcentral.android:id/extension");
     By signInButton = By.id("com.ringcentral.android:id/btnSignIn");
     By countrySelection = By.id("com.ringcentral.android:id/login_left_view");
+    By warningMsg = By.id("android:id/message") ;
+    By warnBtnOK = By.id("android:id/button1");
 
     public LoginPage(WebDriver driver) {
         super(driver);
@@ -33,13 +35,15 @@ public class LoginPage extends Page {
             driver.findElement(cellPhoneEdt).sendKeys(badNumbers[i]);
             driver.findElement(passdEdt).sendKeys("Pass2000");
             driver.findElement(signInButton).click();
-            if (driver.findElement(By.id("android:id/message")).getText().contains(warningText)) {
-                driver.findElement(By.id("android:id/button1")).click();
+
+            if (!driver.findElement(warningMsg).getText().contains(warningText)) {
+                driver.findElement(warnBtnOK).click();
                 answer = false;
+                break;
             }
         }
         Assert.assertTrue(answer);
-        return new LoginPage(driver);
+        return this;
 
     }
 
@@ -54,13 +58,14 @@ public class LoginPage extends Page {
             driver.findElement(cellPhoneEdt).sendKeys("7772332909");
             driver.findElement(passdEdt).sendKeys(badPass[i]);
             driver.findElement(signInButton).click();
-            if (driver.findElement(By.id("android:id/message")).getText().contains(warningText)) {
+            if (!driver.findElement(By.id("android:id/message")).getText().contains(warningText)) {
                 driver.findElement(By.id("android:id/button1")).click();
                 answer = false;
+                break;
             }
         }
         Assert.assertTrue(answer);
-        return new LoginPage(driver);
+        return this ;
 
     }
 

@@ -1,6 +1,7 @@
 package pages;
 
 import org.apache.log4j.Logger;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -16,10 +17,11 @@ public class FirstPage extends Page {
     }
 
     public FirstPage signIn() {
-        log.info("sign in button press");
+        log.info(" 'signIN' button press");
         driver.findElement(signButton).click();
         log.info("OK!");
-        return  new FirstPage(driver);
+        Assert.assertTrue(true);
+        return  this;
     }
 
 }
