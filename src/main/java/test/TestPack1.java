@@ -1,6 +1,8 @@
 package test;
 
-import org.junit.*;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 import pages.FirstPage;
 import pages.LoginPage;
 
@@ -10,8 +12,9 @@ import pages.LoginPage;
 public class TestPack1 extends AndroidSetUp {
     FirstPage firstPage;
     LoginPage loginPage;
-     public TestPack1(){
-        firstPage= new FirstPage(driver);
+
+    public TestPack1() {
+        firstPage = new FirstPage(driver);
         loginPage = new LoginPage(driver);
     }
 
@@ -50,5 +53,15 @@ public class TestPack1 extends AndroidSetUp {
 
     }
 
+    @Test
+    public void clickableSignIn() throws Exception {
+        firstPage.signIn();
+        loginPage.clikableSignIn();
+    }
+
+    @Test
+    public void countryListContainsUkraine() throws Exception {
+    loginPage.countryList();
+    }
 
 }
