@@ -35,7 +35,7 @@ public class LoginPage extends Page {
             driver.findElement(passdEdt).clear();
             driver.findElement(passdEdt).sendKeys("Pass2000");
             driver.findElement(cellPhoneEdt).sendKeys(badNumbers[i]);
-            log.info("Test <wrong Pass> : < "+badNumbers[i]+" >");
+            log.info("Test <wrong Number> : < "+badNumbers[i]+" >");
             driver.findElement(signInButton).click();
 
             if (!driver.findElement(warningMsg).getText().contains(warningText)) {
